@@ -24,16 +24,25 @@
                 "n": 1,
                 "p": 0.2
             },
-            "indices": true
+            "indices": false
         },
         "amount": {
             "distribution": "exponential",
             "parameters": {
                 "scale": 10
             },
-            "indices": false,
+            "indices": true,
             "min": 1,
             "round": 2
         }
+    },
+    "dependencies": {
+        "amount": [
+            {
+                "from": "payment",
+                "condition": "==0",
+                "value": 0
+            }
+        ]
     }
 }
