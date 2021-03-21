@@ -3,7 +3,7 @@
 `data_generator` is a python module for generating synthetic datasets.  
 The function uses `numpy` for generating arrays from known set of values, probabilities or distributions.  
 The result is stored to `pandas` data frame.  
------
+  
 Function `create_dataset` takes the following arguments:  
 * **rows** (integer) - desired number of rows in the dataset;  
 * **params** (dictionary) - dictionary of input parameters;  
@@ -70,7 +70,18 @@ params = {
 
 
 df = data_generator.create_dataset(rows=1000, params=params, seed=1)
-```
+```  
+   
+Output:   
+```tsv
+|    | date       | country   | platform   |   payment |   amount |
+|---:|:-----------|:----------|:-----------|----------:|---------:|
+|  0 | 2021-02-07 | DE        | ios        |         0 |     0    |
+|  1 | 2021-02-08 | IT        | web        |         1 |     2.96 |
+|  2 | 2021-02-11 | UK        | android    |         0 |     0    |
+|  3 | 2021-02-14 | IT        | web        |         1 |     3.51 |
+|  4 | 2021-02-01 | DE        | android    |         0 |     0    |
+```  
   
 
 ### params  
@@ -81,6 +92,7 @@ There are 3 types of data that can be created with the module:
     * end - end date in yyyy-mm-dd format (used if list of values is not specified)  
     * values - list of possible dates in yyyy-mm-dd format  
     * probs - list of weights for every value in values, sum of weights should be equal to 1. Only used if values is specified.  
+  
 Example 1:  
 ```json
 {

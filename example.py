@@ -57,4 +57,4 @@ params = {
 
 
 df = data_generator.create_dataset(rows=1000, params=params, seed=1)
-print(df.head())
+print(df.head().to_markdown())
