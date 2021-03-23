@@ -110,16 +110,21 @@ def get_values(rows, params, indeces, seed):
 def create_dataset(rows, params, seed=1):
     # create dict to sore data to
     data_dict = {}
+
+    # create randomizer
+    rand = np.random.default_rng(seed)
     
     # generate dates
     if 'dates' in params.keys():
         for key in params['dates'].keys():
-            data_dict[key] = get_dates(rows=rows, params=params['dates'][key], seed=seed)
+            new_seed = rand.integers(low=1, high=100, size=1)
+            data_dict[key] = get_dates(rows=rows, params=params['dates'][key], seed=new_seed)
 
     # generate categorical observations
     if 'categorical' in params.keys():
         for key in params['categorical'].keys():
-            data_dict[key] = get_categorical(rows=rows, params=params['categorical'][key], seed=seed)
+            new_seed = rand.integers(low=1, high=100, size=1)
+            data_dict[key] = get_categorical(rows=rows, params=params['categorical'][key], seed=new_seed)
 
     # use indices
     indeces = get_indices(rows=rows, params=params, data_dict=data_dict)
@@ -127,7 +132,8 @@ def create_dataset(rows, params, seed=1):
     # generate values
     if 'values' in params.keys():
         for key in params['values'].keys():
-            data_dict[key] = get_values(rows=rows, params=params['values'][key], indeces=indeces, seed=seed)
+            new_seed = rand.integers(low=1, high=100, size=1)
+            data_dict[key] = get_values(rows=rows, params=params['values'][key], indeces=indeces, seed=new_seed)
     
     # create data frame from dict
     data = pd.DataFrame(data_dict)
