@@ -117,13 +117,13 @@ def create_dataset(rows, params, seed=1):
     # generate dates
     if 'dates' in params.keys():
         for key in params['dates'].keys():
-            new_seed = rand.integers(low=1, high=100, size=1)
+            new_seed = rand.integers(low=1, high=100, size=1)[0]
             data_dict[key] = get_dates(rows=rows, params=params['dates'][key], seed=new_seed)
 
     # generate categorical observations
     if 'categorical' in params.keys():
         for key in params['categorical'].keys():
-            new_seed = rand.integers(low=1, high=100, size=1)
+            new_seed = rand.integers(low=1, high=100, size=1)[0]
             data_dict[key] = get_categorical(rows=rows, params=params['categorical'][key], seed=new_seed)
 
     # use indices
@@ -132,7 +132,7 @@ def create_dataset(rows, params, seed=1):
     # generate values
     if 'values' in params.keys():
         for key in params['values'].keys():
-            new_seed = rand.integers(low=1, high=100, size=1)
+            new_seed = rand.integers(low=1, high=100, size=1)[0]
             data_dict[key] = get_values(rows=rows, params=params['values'][key], indeces=indeces, seed=new_seed)
     
     # create data frame from dict
