@@ -127,7 +127,10 @@ def create_dataset(rows, params, seed=1):
             data_dict[key] = get_categorical(rows=rows, params=params['categorical'][key], seed=new_seed)
 
     # use indices
-    indeces = get_indices(rows=rows, params=params, data_dict=data_dict)
+    if 'categorical' in params.keys():
+        indeces = get_indices(rows=rows, params=params, data_dict=data_dict)
+    else:
+        indeces = 1
             
     # generate values
     if 'values' in params.keys():
