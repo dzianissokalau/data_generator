@@ -71,7 +71,7 @@ def get_categorical(rows, params, seed):
     
     # else assume they have equal probability
     else:
-        cat = rand.choice(a=params['categories'], p=params['probs'], size=rows)
+        cat = rand.choice(a=params['categories'], size=rows)
         
     return cat
 
